@@ -2,12 +2,12 @@ import sys
 import random
 
 from PyQt5.QtGui import QPainter, QColor
-from PyQt5.QtWidgets import QWidget, QApplication
-from PyQt5 import uic
+from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QPointF
+from PyQt5 import uic
 
 
-class YellowCircles(QWidget):
+class YellowCircles(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('UI.ui')
