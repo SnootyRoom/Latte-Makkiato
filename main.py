@@ -3,13 +3,13 @@ import sys
 
 from PyQt5.QtGui import QPainter, QColor
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5 import uic
+from UI import Ui_MainWindow
 
 
-class YellowCircles(QMainWindow):
+class RandomCircles(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
+        self.setupUi(self)
 
         self.btn.clicked.connect(self.paint)
         self.do_paint = False
@@ -27,7 +27,8 @@ class YellowCircles(QMainWindow):
         self.update()
 
     def drawCircle(self, qp):
-        qp.setBrush(QColor(255, 255, 0))
+        r, g, b = random.randint(0,255), random.randint(0,255), random.randint(0,255)
+        qp.setBrush(QColor(r, g, b))
         x = random.randint(20, 520)
         y = random.randint(20, 520)
         R = random.randint(50, 350)
@@ -37,6 +38,6 @@ class YellowCircles(QMainWindow):
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = YellowCircles()
+    ex = RandomCircles()
     ex.show()
     sys.exit(app.exec())
